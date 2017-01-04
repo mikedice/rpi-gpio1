@@ -28,7 +28,7 @@ function startWebServer(){
 
     app.post('/value', function(req, res){
         ledState = req.body;
-        console.log(ledState);
+        
         if (ledState.state === "on"){
             if (ledState.name === greenLED.name){
                 gpio.write(greenLED.channel, true, function(err){
