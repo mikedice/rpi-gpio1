@@ -30,7 +30,7 @@ function startWebServer(){
         ledState = req.body;
         console.log(ledState);
         if (ledState.state === "on"){
-            if (ledState.channel === greenLED.name){
+            if (ledState.name === greenLED.name){
                 gpio.write(greenLED.channel, true, function(err){
                     if (err){ 
                         var message = "error turning on greenLED";
@@ -44,7 +44,7 @@ function startWebServer(){
             }
         }
         else if (ledState.state === "off"){
-            if (ledState.channel === greenLED.name){
+            if (ledState.name === greenLED.name){
                 gpio.write(greenLED.channel, false, function(err){
                     if (err){
                         var message = "error turning off greenLED"; 
