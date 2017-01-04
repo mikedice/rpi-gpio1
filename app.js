@@ -38,6 +38,7 @@ function startWebServer(){
                         res.sendStatus(500).json({status:message});
                     }
                     else{
+                        console.log("turned on greenLED");
                         res.sendStatus(200);
                     }
                 });
@@ -52,6 +53,7 @@ function startWebServer(){
                         res.sendStatus(500).json({status:message}); 
                     }
                     else{
+                        console.log("turned off greenLED");
                         res.sendStatus(200);
                     }
                 });
