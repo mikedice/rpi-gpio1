@@ -28,17 +28,17 @@ function startWebServer(){
 
     app.post('/value', function(req, res){
         ledState = req.body;
-        
+
         if (ledState.state === "on"){
             if (ledState.name === greenLED.name){
                 gpio.write(greenLED.channel, true, function(err){
                     if (err){ 
                         var message = "error turning on greenLED";
                         console.log(message);
-                        res.status(500).json({status:message});
+                        res.sendStatus(500).json({status:message});
                     }
                     else{
-                        res.send(200);
+                        res.sendStatus(200);
                     }
                 });
             }
@@ -49,10 +49,10 @@ function startWebServer(){
                     if (err){
                         var message = "error turning off greenLED"; 
                         console.log(message);
-                        res.status(500).json({status:message}); 
+                        res.sendStatus(500).json({status:message}); 
                     }
                     else{
-                        res.send(200);
+                        res.sendStatus(200);
                     }
                 });
             }
