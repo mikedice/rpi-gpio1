@@ -31,16 +31,33 @@ function startWebServer(){
         if (ledState.state === "on"){
             if (ledState.channel === greenLED.name){
                 gpio.write(greenLED.channel, true, function(err){
-                    if (err){ console.log("error turning on greenLED"); }
+                    if (err){ 
+                        var message = "error turning on greenLED";
+                        console.log(message);
+                        res.status(500).json({status:message});
+                    }
+                    else{
+                        res.send(200);
+                    }
                 });
             }
         }
         else if (ledState.state === "off"){
             if (ledState.channel === greenLED.name){
                 gpio.write(greenLED.channel, false, function(err){
-                    if (err){ console.log("error turning off greenLED"); }
+                    if (err){
+                        var message = "error turning off greenLED"; 
+                        console.log(message);
+                        res.status(500).json({status:message}); 
+                    }
+                    else{
+                        res.send(200);
+                    }
                 });
             }
+        }
+        else{
+            res.send(404).json({status:"not found"});
         }
     });
     app.listen(3000);
