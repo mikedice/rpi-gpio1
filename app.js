@@ -15,7 +15,7 @@ var greenLED = {
 
 // Helper function to setup hardware
 function setupOutputLED(ledInfo){
-    return new Promise(function(resolve, rejejct){
+    return new Promise(function(resolve, reject){
         gpio.setup(ledInfo.channel, gpio.DIR_OUT, function(err){
             if(err) reject(err);
             resolve(ledInfo);
