@@ -1,3 +1,4 @@
+// Test basic GPIO on rpi
 var express = require('express');
 var bodyParser = require('body-parser');
 var gpio = require('rpi-gpio');
