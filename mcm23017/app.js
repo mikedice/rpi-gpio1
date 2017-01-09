@@ -9,25 +9,27 @@ var data = [
 	0xB1,0xB2,0xB4,0xB8, // row 3
 	0x71,0x72,0x74,0x78  // row 4
 ];
+
+var H = [0xE1,0xE8,0xD1,0xD2,0xD4,0xD8,0xB1,0xB8,0x71,0x78]
 console.log('wire created');
 
 
-function toggleLights(idx){
-    wire.writeBytes(0x14, [data[idx]], function(){
-	sleep.usleep(50000);
-	if (idx < data.length){
-	toggleLights(idx+1);
-	}
-	else
-	{
-	  idx = 0;
-	  toggleLights(idx);
-	}
+function displayChar(chr, idx){
+    wire.writeBytes(0x14, [chr[idx]], function(){
+		sleep.usleep(50000);
+		if (idx < chr.length){
+			displayChar(chr, idx+1);
+		}
+		else
+		{
+			idx = 0;
+			displayChar(chr, idx);
+		}
     });
 }
 
 wire.writeBytes(0x00, [0x00], function(){
     console.log('wrote first bytes');
-    toggleLights(0);
+    displayChar(H, 0);
 });
 
