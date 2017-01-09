@@ -16,7 +16,7 @@ console.log('wire created');
 
 function displayChar(chr, idx){
     wire.writeBytes(0x14, [chr[idx]], function(){
-		sleep.usleep(50000);
+		sleep.usleep(1000);
 		if (idx < chr.length){
 			displayChar(chr, idx+1);
 		}
