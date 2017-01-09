@@ -65,9 +65,10 @@ function displayChar(chr, idx, duration, callback){
     });
 }
 
-wire.writeBytes(0x00, [0x00], function(){
+
+function displayMessage(){
     console.log('wrote first bytes');
-	var duration=1250;
+	var duration=750;
     displayChar(H, 0, duration, function(){
 		displayChar(blank, 0, 1, function(){
 			displayChar(A, 0, duration, function(){
@@ -80,7 +81,7 @@ wire.writeBytes(0x00, [0x00], function(){
 										displayChar(blank, 0, 1, function(){
 											displayChar(Y, 0, duration, function(){
 												displayChar(blank, 0, 1, function(){
-
+												    displayMessage
 												});
 											});
 										});
@@ -93,5 +94,8 @@ wire.writeBytes(0x00, [0x00], function(){
 			});
 		});	
 	});
+};
+wire.writeBytes(0x00, [0x00], function(){
+	displayMessage();
 });
 
