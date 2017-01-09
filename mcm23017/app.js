@@ -24,12 +24,12 @@ function displayChar(chr, idx, duration, callback){
 		if (duration>0){
 			duration--;
 			if (idx < chr.length){
-				displayChar(chr, idx+1, duration);
+				displayChar(chr, idx+1, duration, callback);
 			}
 			else
 			{
 				idx = 0;
-				displayChar(chr, idx, duration);
+				displayChar(chr, idx, duration, callback);
 			}
 		}
 		else{
@@ -42,13 +42,11 @@ wire.writeBytes(0x00, [0x00], function(){
     console.log('wrote first bytes');
 	var duration=1250;
     displayChar(h, 0, duration, function(){
-		displayChar(blank, 0, duration, function(){
+		displayChar(blank, 0, 1, function(){
 			displayChar(a, 0, duration, function(){
 				displayChar(blank, 0, duration, function(){});
 			});
 		});	
 	});
-    
-	
 });
 
