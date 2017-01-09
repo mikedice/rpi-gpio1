@@ -81,7 +81,7 @@ function displayMessage(){
 										displayChar(blank, 0, 1, function(){
 											displayChar(Y, 0, duration, function(){
 												displayChar(blank, 0, 1, function(){
-												    displayMessage
+												    displayMessage();
 												});
 											});
 										});
