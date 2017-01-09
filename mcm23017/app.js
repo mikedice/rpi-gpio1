@@ -68,7 +68,7 @@ function displayChar(chr, idx, duration, callback){
 
 function displayMessage(){
     console.log('wrote first bytes');
-	var duration=750;
+	var duration=250;
     displayChar(H, 0, duration, function(){
 		displayChar(blank, 0, 1, function(){
 			displayChar(A, 0, duration, function(){
