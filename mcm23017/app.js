@@ -37,8 +37,9 @@ function displayChar(chr, idx, duration){
 
 wire.writeBytes(0x00, [0x00], function(){
     console.log('wrote first bytes');
-	var duration=5000;
+	var duration=1250;
     displayChar(h, 0, duration);
     displayChar(blank, 0, duration);
+	displayChar(a, 0, duration);
 });
 
