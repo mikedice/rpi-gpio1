@@ -18,7 +18,7 @@ var blank = [0xE0, 0xD0, 0xB0, 0x70];
 console.log('wire created');
 
 
-function displayChar(chr, idx, duration){
+function displayChar(chr, idx, duration, callback){
     wire.writeBytes(0x14, [chr[idx]], function(){
 		sleep.usleep(1000);
 		if (duration>0){
@@ -32,14 +32,23 @@ function displayChar(chr, idx, duration){
 				displayChar(chr, idx, duration);
 			}
 		}
+		else{
+			callback();
+		}
     });
 }
 
 wire.writeBytes(0x00, [0x00], function(){
     console.log('wrote first bytes');
 	var duration=1250;
-    displayChar(h, 0, duration);
-    displayChar(blank, 0, duration);
-	displayChar(a, 0, duration);
+    displayChar(h, 0, duration, function(){
+		displayChar(blank, 0, duration, function(){
+			displayChar(a, 0, duration, function(){
+				displayChar(blank, 0, duration, function(){});
+			});
+		});	
+	});
+    
+	
 });
 
