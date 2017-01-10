@@ -47,7 +47,7 @@ console.log('wire created');
 
 function displayChar(chr, idx, duration, callback){
     wire.writeBytes(0x14, [chr[idx]], function(){
-		sleep.usleep(1000);
+		sleep.usleep(750);
 		if (duration>0){
 			duration--;
 			if (idx < chr.length){
@@ -67,7 +67,6 @@ function displayChar(chr, idx, duration, callback){
 
 
 function displayMessage(){
-    console.log('wrote first bytes');
 	var duration=250;
     displayChar(H, 0, duration, function(){
 		displayChar(blank, 0, 1, function(){
