@@ -38,11 +38,11 @@ function writeSmiley(){
 
 function turnOn(callback){
     console.log('turning on');
-    wire.writeBytes(0x21, function(err){
+    wire.writeByte(0x21, function(err){
         if (err) throw err;
         console.log('started oscillator');
 
-        wire.writeBytes(0x81, function(err){
+        wire.writeByte(0x81, function(err){
             if (err) throw err;
             console.log('turned on display');
             callback();
