@@ -44,7 +44,9 @@ function turnOn(callback){
     });
 }
 
-turnOn();
+turnOn(function(){
+    writeSmiley();
+});
 while (true){
     sleep.sleep(1);
 }
