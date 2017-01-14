@@ -29,7 +29,7 @@ function writeSmiley(){
     console.log('writing smiley');
     for (var i = 0; i<address.length; i++)
     {
-        wire.WriteBytes(address[i], [smiley[i]], function(err){
+        wire.writeBytes(address[i], [smiley[i]], function(err){
             if (err) throw err;
             console.log('wrote smiley byte');
         });
