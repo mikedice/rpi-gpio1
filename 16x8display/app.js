@@ -37,7 +37,7 @@ var smiley = [
     parseInt('00111100', 2),
 ];
 
-function writeSmileyLef(){
+function writeSmileyLeft(){
     console.log('writing smiley on left');
     for (var i = 0; i<addressLeft.length; i++)
     {
