@@ -22,6 +22,7 @@ var smiley = [
     parseInt('10000001', 2),
     parseInt('10100101', 2),
     parseInt('10011001', 2),
+    parseInt('01000010', 2),
     parseInt('00111100', 2),
 ];
 
