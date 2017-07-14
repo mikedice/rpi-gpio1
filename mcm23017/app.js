@@ -67,7 +67,7 @@ function displayChar(chr, idx, duration, callback){
 
 
 function displayMessage(){
-	var duration=250;
+	var duration=100;
     displayChar(H, 0, duration, function(){
 		displayChar(blank, 0, 1, function(){
 			displayChar(A, 0, duration, function(){
