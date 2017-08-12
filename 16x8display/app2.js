@@ -4,6 +4,7 @@ var sleep = require('sleep');
 var i2cAddress = 0x70;
 var wire = new i2c(i2cAddress, {device: '/dev/i2c-1'});
 
+// I2C addresses of each row in the left bank of pixels
 var addressLeft = [
     0x00,
     0x02,
@@ -15,6 +16,7 @@ var addressLeft = [
     0x0E
 ];
 
+// I2C addresses of each row in the right bank of pixels
 var addressRight = [
     0x01,
     0x03,
@@ -26,16 +28,25 @@ var addressRight = [
     0x0F
 ];
 
+// Buffers to store screen pixel values of each row
+// Initialized to all pizels off
+var screenLeft = [0,0,0,0,0,0,0,0];
+var screenRight = [0,0,0,0,0,0,0,0];
+var maxRows = 8;
+var maxCols = 16;
+
+// clear all the pixels
 function clear(){
-    for (var i = 0; i<8; i++) {
-	    wire.writeBytes(addressLeft[i], [0], function(err){});
-            wire.writeBytes(addressRight[i], [0], function(err){});
+    screenLeft = [0,0,0,0,0,0,0,0];
+    screenRight = [0,0,0,0,0,0,0,0];
+    for (var i = 0; i<maxRows; i++){
+        wire.writeBytes(addressLeft[i], [0], function(err){});
+        wire.writeBytes(addressRight[i], [0], function(err){});
     }
 }
 
-var screenLeft = [0,0,0,0,0,0,0,0];
-var screenRight = [0,0,0,0,0,0,0,0];
-
+// turn on or off a pixel. Value of row has to be
+// less than maxRows. Value has to be less than maxCols
 function setBit(row, col, on){
    var mask = Math.pow(2, col<8 ? col : col-8);
    var bank = col < 8 ? screenLeft : screenRight;
