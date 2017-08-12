@@ -49,7 +49,7 @@ function writeSmileyLeft(){
 
     for (var i = 0; i<addressRight.length; i++)
     {
-        wire.writeBytes(addressRight[i], [0], function(err){
+        wire.writeBytes(addressRight[i], [smiley[i]], function(err){
             if (err) throw err;
             console.log('wrote smiley byte');
         });
